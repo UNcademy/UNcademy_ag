@@ -12,9 +12,18 @@ import {
     taskTypeDef, taskQueries, taskMutations,
     gradeTypeDef, gradeMutations,
     scheduleTypeDef, scheduleQuery
-} from './UNcademy/grades/typeDefs';
+} from './restConsumption/grades/typeDefs';
 
-import gradesResolvers from './UNcademy/grades/resolvers';
+import {
+    searchQueries, searchTypeDef
+} from './restConsumption/search/typeDefs';
+
+import {
+    combinedResolvers, combinedMutations
+} from './businessLogic/grades';
+
+import gradesResolvers from './restConsumption/grades/resolvers';
+import searchResolvers from './restConsumption/search/resolvers';
 
 // merge the typeDefs
 const mergedTypeDefs = mergeSchemas(
@@ -26,19 +35,22 @@ const mergedTypeDefs = mergeSchemas(
         teacherTypeDef,
         taskTypeDef,
         gradeTypeDef,
-        scheduleTypeDef
+        scheduleTypeDef,
+        searchTypeDef
     ],
     [
         classListQueries,
         taskQueries,
-        scheduleQuery
+        scheduleQuery,
+        searchQueries
     ],
     [
         classListMutations,
         studentMutations,
         teacherMutations,
         taskMutations,
-        gradeMutations
+        gradeMutations,
+        combinedMutations
     ]
 );
 
@@ -47,6 +59,8 @@ export default makeExecutableSchema({
     typeDefs: mergedTypeDefs,
     resolvers: merge(
         { JSON: GraphQLJSON }, // allows scalar JSON
-        gradesResolvers
+        gradesResolvers,
+        searchResolvers,
+        combinedResolvers
     )
 });
