@@ -22,6 +22,8 @@ const requests = {
         generalRequest(`${URL}/editStudent/${id}`, 'PUT', student),
     removeStudent: (_, { id, classId }) =>
         generalRequest(`${URL}/class/${classId}/student/${id}/remove`, 'DELETE'),
+    addTeacher: (_, { classId, teacher }) =>
+        generalRequest(`${URL}/class/addTeacher/${classId}`, 'POST', teacher),
     updateTeacher: (_, { id, classId, teacher }) =>
         generalRequest(`${URL}/class/${classId}/teacher/${id}/edit`, 'PUT', teacher),
     removeTeacher: (_, { id, classId }) =>

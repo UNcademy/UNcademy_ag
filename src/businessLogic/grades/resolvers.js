@@ -48,14 +48,17 @@ const gradesResolvers = {
         deleteClassList: (_, { id }) => {
             return gradesRequests.deleteClassList(_, { id })
         },
+        addTeacher: (_, { classId, teacher }) => {
+            return gradesRequests.addTeacher(_, { classId, teacher })
+        },
+        updateTeacher: (_, { id, classId, teacher }) => {
+            return gradesRequests.updateTeacher(_, { id, classId, teacher })
+        },
         removeTeacher: (_, { id, classId }) => {
             return gradesRequests.removeTeacher(_, { id, classId })
         },
         updateStudent: (_, { id, student }) => {
             return gradesRequests.updateStudent(_, { id, student })
-        },
-        updateTeacher: (_, { id, classId, teacher }) => {
-            return gradesRequests.updateTeacher(_, { id, classId, teacher })
         },
 
         //TODO: Quitar estos 2 cuando ya estén funcionando en el Business Logic de inscribir/cancelar asignaturas
@@ -81,14 +84,16 @@ const gradesResolvers = {
         deleteTasks: (_, { classId }) => {
             return gradesRequests.deleteTasks(_, { classId })
         },
-        addAbsences: (_, { classId, studentId, absences }) => {
-            return gradesRequests.addAbsences(_, { classId, studentId, absences })
-        },
         addGrade: (_, { classId, studentId, taskId, grade }) => {
             return gradesRequests.addGrade(_, { classId, studentId, taskId, grade })
         },
         editGrade: (_, { classId, studentId, taskId, grade }) => {
             return gradesRequests.editGrade(_, { classId, studentId, taskId, grade })
+        },
+
+        // TODO: ¿De dónde sale max absences?
+        addAbsences: (_, { classId, studentId, absences }) => {
+            return gradesRequests.addAbsences(_, { classId, studentId, absences })
         },
     }
 }

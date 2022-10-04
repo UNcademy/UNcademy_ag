@@ -82,6 +82,12 @@ export const teacherTypeDef = `
       wDays: String!
       isHead: Boolean
   }
+  input AddTeacher {
+      teacherName: String!
+      classroom: String!
+      schedule: String!
+      wDays: String!
+  }
   type TeacherRole {
       isHead: Boolean!
   }
@@ -93,6 +99,7 @@ export const teacherTypeDef = `
   `;
 
 export const teacherMutations = `
+    addTeacher(classId: Int!, teacher: AddTeacher!): Message
     updateTeacher(id:Int!, classId: Int!, teacher: TeacherUpdate!): Message
     removeTeacher(id: Int!, classId: Int!): Message
 `;
