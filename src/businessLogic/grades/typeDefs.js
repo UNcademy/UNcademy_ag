@@ -12,25 +12,6 @@ export const classListTypeDef = `
       EnrolledStudents: [GradedStudent]
       Teachers: [TeacherInfo]
   }
-  type NewClassList {
-      teacherId: Int!
-      teacherName: String!
-      classListId: Int!
-      semester: String!
-      courseName: String!
-      courseGroup: Int!
-      isNum: Boolean!
-  }
-  input ClassListInput {
-      teacherName: String!
-      semester: String!
-      courseName: String!
-      courseGroup: Int!
-      isNum: Boolean!
-      classroom: String!
-      schedule: String!
-      wDays: String!
-  }
   input ClassListUpdate {
       semester: String!
       courseName: String!
@@ -43,7 +24,7 @@ export const classListQueries = `
   `;
 
 export const classListMutations = `
-    createClassList(classList: ClassListInput!): NewClassList!
+    createClassList(teacherName: String!): Message
     updateClassList(id:Int!, classList: ClassListUpdate!): Message
     deleteClassList(id: Int!): Message
 `;
@@ -75,6 +56,7 @@ export const studentTypeDef = `
       maxAbsences: Int!
   }
   type StudentInfo {
+      studentId: Int!
       studentName: String!
       studyProgram: String!
   }
@@ -104,6 +86,7 @@ export const teacherTypeDef = `
       isHead: Boolean!
   }
   type TeacherInfo {
+      teacherId: Int!
       teacherName: String!
       TeacherRole: TeacherRole!
   }

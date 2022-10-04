@@ -5,7 +5,7 @@ import koaBody from 'koa-bodyparser';
 import koaCors from '@koa/cors';
 
 import { graphiqlKoa, graphqlKoa } from 'apollo-server-koa';
-import graphQLSchema from './graphQLSchema';
+import graphQLSchema from './apiGraphQL/graphQLSchema';
 
 import { formatErr } from './utilities';
 

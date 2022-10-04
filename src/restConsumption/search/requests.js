@@ -4,12 +4,9 @@ import request from "request-promise-native";
 
 const URL = `http://${url}:${port}/${entryPoint}`;
 
-const resolvers = {
-    Query: {
-        searchByProfessor: (_, { teacherName }) => {
-            return generalRequest(`${URL}/groupByProfessor/${teacherName}`, 'GET')
-        }
-    }
+const requests = {
+    searchByProfessor: (_, { teacherName }) =>
+        generalRequest(`${URL}/groupByProfessor/${teacherName}`, 'GET')
 };
 
-export default resolvers;
+export default requests;

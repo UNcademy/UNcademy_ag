@@ -17,6 +17,7 @@ export const searchTypeDef = `
       tipologia: String!
       descripcion: String!
       prerequisitos: String!
+      esNumerico: Boolean!
   }
   type Group {
       id: Int!

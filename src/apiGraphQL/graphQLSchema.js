@@ -2,7 +2,7 @@ import merge from 'lodash.merge';
 import GraphQLJSON from 'graphql-type-json';
 import { makeExecutableSchema } from 'graphql-tools';
 
-import { mergeSchemas } from './utilities';
+import { mergeSchemas } from '../utilities';
 
 import {
     messageTypeDef,
@@ -12,18 +12,14 @@ import {
     taskTypeDef, taskQueries, taskMutations,
     gradeTypeDef, gradeMutations,
     scheduleTypeDef, scheduleQuery
-} from './restConsumption/grades/typeDefs';
+} from '../businessLogic/grades/typeDefs';
 
 import {
     searchQueries, searchTypeDef
-} from './restConsumption/search/typeDefs';
+} from '../businessLogic/search/typeDefs';
 
-import {
-    combinedResolvers, combinedMutations
-} from './businessLogic/grades';
-
-import gradesResolvers from './restConsumption/grades/resolvers';
-import searchResolvers from './restConsumption/search/resolvers';
+import gradesResolvers from '../businessLogic/grades/resolvers';
+import searchResolvers from "../businessLogic/search/resolvers";
 
 // merge the typeDefs
 const mergedTypeDefs = mergeSchemas(
@@ -50,7 +46,6 @@ const mergedTypeDefs = mergeSchemas(
         teacherMutations,
         taskMutations,
         gradeMutations,
-        combinedMutations
     ]
 );
 
@@ -60,7 +55,6 @@ export default makeExecutableSchema({
     resolvers: merge(
         { JSON: GraphQLJSON }, // allows scalar JSON
         gradesResolvers,
-        searchResolvers,
-        combinedResolvers
+        searchResolvers
     )
 });

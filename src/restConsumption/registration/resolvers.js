@@ -6,4 +6,4 @@ const URL = `http://${url}:${port}/${entryPoint}`;
 
 
 
-export default resolvers;
+export default requests;
