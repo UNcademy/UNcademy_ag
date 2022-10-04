@@ -1,3 +1,5 @@
+// TODO: Los types no pueden llevar nombres duplicados
+
 //Campus
 export const searchAllCampusTypedef = `
     type Campus {
