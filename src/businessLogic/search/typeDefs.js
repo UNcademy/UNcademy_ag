@@ -88,7 +88,7 @@ export const searchmateriaByPlanTypedef = `
         descripcion: String!
         prerequisitos: String!
     }
-    type PlanEstudios {
+    type PlanEstudiosByType {
         nombre: String!
         FacultadId: Int!
         NivelEstudioId: Int!
@@ -98,14 +98,14 @@ export const searchmateriaByPlanTypedef = `
 
 
 export const searchmateriaByPlanQueries = `
-        searchmateriaByPlan(Id: Int!): [PlanEstudios]
+        searchmateriaByPlan(Id: Int!): [PlanEstudiosByType]
 `;
 
 
 //Group
 
 export const groupBynumerTypeDef = `
-  type Course {
+  type CourseBynumer {
       id: Int!
       nombre: String!
       codigoMateria: String!
@@ -122,7 +122,7 @@ export const groupBynumerTypeDef = `
       docenteTitular: String!
       semestre: String!
       MateriumId: Int!
-      Materium: Course!
+      Materium: CourseBynumer!
   }
 `;
 
@@ -140,7 +140,7 @@ export const searchByProfessorTypeDef = `
       dias: String!
       GrupoId: Int!
   } 
-  type Course {
+  type CourseByProfessor {
       id: Int!
       nombre: String!
       codigoMateria: String!
@@ -151,14 +151,14 @@ export const searchByProfessorTypeDef = `
       prerequisitos: String!
       esNumerico: Boolean!
   }
-  type Group {
+  type GroupByProfessor {
       id: Int!
       numeroGrupo: Int!
       cuposDisponibles: Int!
       docenteTitular: String!
       semestre: String!
       MateriumId: Int!
-      Materium: Course!
+      Materium: CourseByProfessor!
       subGrupos: [Subgroup!]!
   }
 `;
@@ -168,7 +168,7 @@ export const searchByProfessorQueries = `
   `;
 
 export const groupByQuotaTypeDef = `
-  type Group {
+  type GroupByQuota {
       id: Int!
       numeroGrupo: Int!
       cuposDisponibles: Int!
@@ -195,7 +195,7 @@ export const groupByIdTypeDef = `
       descripcion: String!
       prerequisitos: String!
   }
-  type Group {
+  type GroupById {
       id: Int!
       numeroGrupo: Int!
       cuposDisponibles: Int!
@@ -207,11 +207,11 @@ export const groupByIdTypeDef = `
 `;
 
 export const groupByIdQueries = `
-    groupById(groupId: Int!): [Group]
+    groupById(groupId: Int!): [GroupById]
   `;
 
 export const subGrupoByGrupoIdTypeDef = `
-  type Group {
+  type GroupByGrupoId {
       id: Int!
       numeroGrupo: Int!
       cuposDisponibles: Int!
@@ -219,7 +219,7 @@ export const subGrupoByGrupoIdTypeDef = `
       semestre: String!
       MateriumId: Int!
   }
-  type Subgroup {
+  type SubgroupByGrupoId {
     id: Int!
     identificadorSubGrupo: Int!
     docenteEspecifico: String!
@@ -227,7 +227,7 @@ export const subGrupoByGrupoIdTypeDef = `
     hora: String!
     dias: String!
     GrupoId: Int!
-    Grupo: Group
+    Grupo: GroupByGrupoId
 } 
 `;
 
