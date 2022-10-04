@@ -11,7 +11,7 @@ import {
     teacherTypeDef, teacherMutations,
     taskTypeDef, taskQueries, taskMutations,
     gradeTypeDef, gradeMutations,
-    scheduleTypeDef, scheduleQuery
+    scheduleTypeDef, scheduleQuery,
 } from '../businessLogic/grades/typeDefs';
 
 import {
@@ -32,8 +32,14 @@ import {
 
 } from '../businessLogic/search/typeDefs';
 
+import {
+    finalGradesTypeDef, finalGradesQueries, finalGradesMutations,
+    statsTypeDef, statsQueries
+} from '../businessLogic/conGrades/typeDefs'
+
 import gradesResolvers from '../businessLogic/grades/resolvers';
 import searchResolvers from "../businessLogic/search/resolvers";
+import conGradesResolvers from "../businessLogic/conGrades/resolvers";
 
 // merge the typeDefs
 const mergedTypeDefs = mergeSchemas(
@@ -55,6 +61,8 @@ const mergedTypeDefs = mergeSchemas(
         groupByIdTypeDef,
         groupBynumerTypeDef,
         groupByQuotaTypeDef,
+        finalGradesTypeDef,
+        statsTypeDef
     ],
     [
         classListQueries,
@@ -74,6 +82,8 @@ const mergedTypeDefs = mergeSchemas(
         searchSubjectByKeywordQueries,
         searchSubjectByNameQueries,
         searchSubjectByTypeQueries,
+        finalGradesQueries,
+        statsQueries
     ],
     [
         classListMutations,
@@ -81,6 +91,7 @@ const mergedTypeDefs = mergeSchemas(
         teacherMutations,
         taskMutations,
         gradeMutations,
+        finalGradesMutations
     ]
 );
 
@@ -90,6 +101,7 @@ export default makeExecutableSchema({
     resolvers: merge(
         { JSON: GraphQLJSON }, // allows scalar JSON
         gradesResolvers,
-        searchResolvers
+        searchResolvers,
+        conGradesResolvers
     )
 });
