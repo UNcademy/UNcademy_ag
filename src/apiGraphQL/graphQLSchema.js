@@ -15,7 +15,21 @@ import {
 } from '../businessLogic/grades/typeDefs';
 
 import {
-    searchQueries, searchTypeDef
+    searchAllCampusQueries, searchAllCampusTypedef,
+    searchAllFacultiesQueries, searchAllFacultiesTypedef,
+    searchAllSubjectsQueries, searchAllSubjectsTypedef,
+    searchByProfessorQueries, searchByProfessorTypeDef,
+    searchmateriaByPlanQueries, searchmateriaByPlanTypedef,
+    subGrupoByGrupoIdQueries, subGrupoByGrupoIdTypeDef,
+    groupByIdQueries, groupByIdTypeDef,
+    groupBynumerQueries, groupBynumerTypeDef,
+    groupByQuotaQueries, groupByQuotaTypeDef,
+    searchSubjectByCodeQueries,
+    searchSubjectByIdQueries,
+    searchSubjectByKeywordQueries,
+    searchSubjectByNameQueries,
+    searchSubjectByTypeQueries
+
 } from '../businessLogic/search/typeDefs';
 
 import gradesResolvers from '../businessLogic/grades/resolvers';
@@ -32,13 +46,34 @@ const mergedTypeDefs = mergeSchemas(
         taskTypeDef,
         gradeTypeDef,
         scheduleTypeDef,
-        searchTypeDef
+        searchAllCampusTypedef,
+        searchAllFacultiesTypedef,
+        searchAllSubjectsTypedef,
+        searchByProfessorTypeDef,
+        searchmateriaByPlanTypedef,
+        subGrupoByGrupoIdTypeDef,
+        groupByIdTypeDef,
+        groupBynumerTypeDef,
+        groupByQuotaTypeDef,
     ],
     [
         classListQueries,
         taskQueries,
         scheduleQuery,
-        searchQueries
+        searchAllCampusQueries,
+        searchAllFacultiesQueries,
+        searchAllSubjectsQueries,
+        searchByProfessorQueries,
+        searchmateriaByPlanQueries,
+        subGrupoByGrupoIdQueries,
+        groupByIdQueries,
+        groupBynumerQueries,
+        groupByQuotaQueries,
+        searchSubjectByCodeQueries,
+        searchSubjectByIdQueries,
+        searchSubjectByKeywordQueries,
+        searchSubjectByNameQueries,
+        searchSubjectByTypeQueries,
     ],
     [
         classListMutations,

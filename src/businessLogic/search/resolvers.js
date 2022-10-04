@@ -17,6 +17,9 @@ const searchResolvers = {
         searchSubjectByType: (_, { courseType }) => {
             return searchRequests.searchSubjectByType(_, { courseType })
         },
+        searchSubjectByCode: (_, { courseCode }) => {
+            return searchRequests.searchSubjectByCode(_, { courseCode })
+        },
         searchSubjectById: (_, { courseId }) => {
             return searchRequests.searchSubjectById(_, { courseId })
         },
