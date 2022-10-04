@@ -15,7 +15,15 @@ import {
 } from './restConsumption/grades/typeDefs';
 
 import {
-    searchQueries, searchTypeDef
+    searchAllCampusTypedef, searchAllCampusQueries, searchAllFacultiesTypedef,
+    searchAllFacultiesQueries, searchAllSubjectsTypedef, searchAllSubjectsQueries, 
+    searchSubjectByNameQueries, searchSubjectByCodeQueries, searchSubjectByTypeQueries,
+    searchSubjectByIdQueries, searchSubjectByKeywordQueries, searchmateriaByPlanTypedef, 
+    searchmateriaByPlanQueries, groupBynumerTypeDef, groupBynumerQueries, 
+    searchByProfessorTypeDef, searchByProfessorQueries, groupByQuotaTypeDef, 
+    groupByQuotaQueries, groupByIdTypeDef, groupByIdQueries, subGrupoByGrupoIdTypeDef,
+    subGrupoByGrupoIdQueries
+
 } from './restConsumption/search/typeDefs';
 
 import {
@@ -36,13 +44,34 @@ const mergedTypeDefs = mergeSchemas(
         taskTypeDef,
         gradeTypeDef,
         scheduleTypeDef,
-        searchTypeDef
+        searchAllCampusTypedef,
+        searchAllFacultiesTypedef,
+        searchAllSubjectsTypedef,
+        searchmateriaByPlanTypedef,
+        groupBynumerTypeDef,
+        searchByProfessorTypeDef,
+        groupByQuotaTypeDef,
+        groupByIdTypeDef,
+        subGrupoByGrupoIdTypeDef,
+        searchSubjectByTypeQueries,
+        groupBynumerQueries,
+        searchmateriaByPlanQueries,
+        searchByProfessorQueries,
+        groupByQuotaQueries,
+        groupByIdQueries,
+        subGrupoByGrupoIdQueries
     ],
     [
         classListQueries,
         taskQueries,
         scheduleQuery,
-        searchQueries
+        searchAllCampusQueries,
+        searchAllFacultiesQueries,
+        searchAllSubjectsQueries,
+        searchSubjectByNameQueries,
+        searchSubjectByCodeQueries,
+        searchSubjectByIdQueries,
+        searchSubjectByKeywordQueries
     ],
     [
         classListMutations,
