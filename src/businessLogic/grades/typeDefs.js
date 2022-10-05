@@ -9,6 +9,7 @@ export const classListTypeDef = `
       semester: String!
       courseName: String!
       courseGroup: Int!
+      isNum: Boolean!
       EnrolledStudents: [GradedStudent]
       Teachers: [TeacherInfo]
   }
