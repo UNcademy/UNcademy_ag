@@ -12,8 +12,8 @@ const request = {
         generalRequest(`${URL}/finalgrade/student/${groupId}/${studentName}`, 'GET'),
     statsByGroup: (_, { groupId }) =>
         generalRequest(`${URL}/stats/${groupId}`, 'GET'),
-    createFinalGrade: (_, { finalGrade }) =>
-        generalRequest(`${URL}/finalgrade/save`, 'POST', finalGrade),
+    createFinalGrade: (_, { finalGradeInput }) =>
+        generalRequest(`${URL}/finalgrade/save`, 'POST', finalGradeInput),
 };
 
 export default request

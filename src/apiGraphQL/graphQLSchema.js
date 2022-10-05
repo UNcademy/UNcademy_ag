@@ -52,7 +52,7 @@ const mergedTypeDefs = mergeSchemas(
         taskTypeDef,
         gradeTypeDef,
         scheduleTypeDef,
-        searchAllCampusTypedef,
+        /*searchAllCampusTypedef,
         searchAllFacultiesTypedef,
         searchAllSubjectsTypedef,
         searchByProfessorTypeDef,
@@ -60,7 +60,7 @@ const mergedTypeDefs = mergeSchemas(
         subGrupoByGrupoIdTypeDef,
         groupByIdTypeDef,
         groupBynumerTypeDef,
-        groupByQuotaTypeDef,
+        groupByQuotaTypeDef,*/
         finalGradesTypeDef,
         statsTypeDef
     ],
@@ -68,7 +68,7 @@ const mergedTypeDefs = mergeSchemas(
         classListQueries,
         taskQueries,
         scheduleQuery,
-        searchAllCampusQueries,
+        /*searchAllCampusQueries,
         searchAllFacultiesQueries,
         searchAllSubjectsQueries,
         searchByProfessorQueries,
@@ -81,7 +81,7 @@ const mergedTypeDefs = mergeSchemas(
         searchSubjectByIdQueries,
         searchSubjectByKeywordQueries,
         searchSubjectByNameQueries,
-        searchSubjectByTypeQueries,
+        searchSubjectByTypeQueries,*/
         finalGradesQueries,
         statsQueries
     ],
@@ -101,7 +101,7 @@ export default makeExecutableSchema({
     resolvers: merge(
         { JSON: GraphQLJSON }, // allows scalar JSON
         gradesResolvers,
-        searchResolvers,
+        //searchResolvers,
         conGradesResolvers
     )
 });

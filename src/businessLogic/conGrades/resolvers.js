@@ -17,14 +17,13 @@ const conGradesResolvers = {
         }
     },
     Mutation:{
-        createFinalGrade: async (_, {groupId}) => {
-            const courseDetails = await gradesRequests.classListDetails(_, {groupId});
+        createFinalGrade: async (_, { id } ) => {
+            const courseDetails = await gradesRequests.classListDetails(_, {id});
             let finalGradeInput = [];
-            const classList = courseDetails.classListDetails;
-            for (const student of classList.EnrolledStudents){
-                for (const tasks of student.tasks){
+            for (const student of courseDetails.EnrolledStudents){
+                for (const tasks of student.Tasks){
                     let calcGrade = null
-                    if (classList.isNum){
+                    if (courseDetails.isNum !== null){
                         calcGrade = tasks.Grade.value;
                         calcGrade = calcGrade.toString();
                     }
@@ -37,9 +36,9 @@ const conGradesResolvers = {
                         }
                     }
                     const input = {
-                        courseGroup: classList.courseGroup,
-                        isNum: classList.isNum,
-                        studentName: student.studentName,
+                        courseGroup: courseDetails.courseGroup,
+                        isNum: courseDetails.isNum,
+                        studentName: student.Student.studentName,
                         absences: student.absences,
                         weight: tasks.weight,
                         grade:calcGrade
@@ -47,8 +46,9 @@ const conGradesResolvers = {
                     finalGradeInput.push(input)
                 }
             }
-            await conGradesRequests.createFinalGrade(_, finalGradeInput)
-            return {message: "Las notas definitivas y las estadísticas de "+classList.courseGroup+" han sido creadas"}
+            console.log(finalGradeInput)
+            await conGradesRequests.createFinalGrade(_, {finalGradeInput})
+            return {message: "Las notas definitivas y las estadísticas de "+ courseDetails.courseGroup+" han sido creadas"}
         }
     }
 }
