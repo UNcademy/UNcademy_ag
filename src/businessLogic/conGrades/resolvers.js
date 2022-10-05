@@ -9,17 +9,46 @@ const conGradesResolvers = {
         finalGradesByStudent: (_, { studentName }) => {
             return conGradesRequests.finalGradesByStudent(_, {studentName})
         },
-        finalGradesByStudentAndGroup: (_, {groupId, studentName}) => {
-            return conGradesRequests.finalGradesByStudentAndGroup(_, {groupId, studentName})
+        finalGradesByGroupAndStudent: (_, {groupId, studentName}) => {
+            return conGradesRequests.finalGradesByGroupAndStudent(_, {groupId, studentName})
         },
-        getStats: (_, {groupId} ) => {
-            return conGradesRequests.getStats(_, {groupId})
+        statsByGroup: (_, {groupId} ) => {
+            return conGradesRequests.statsByGroup(_, {groupId})
         }
     },
     Mutation:{
         createFinalGrade: async (_, {groupId}) => {
-            const courseDetails = await gradesRequests.classListDetails(_, {groupId})
-
+            const courseDetails = await gradesRequests.classListDetails(_, {groupId});
+            let finalGradeInput = [];
+            const classList = courseDetails.classListDetails;
+            for (const student of classList.EnrolledStudents){
+                for (const tasks of student.tasks){
+                    let calcGrade = null
+                    if (classList.isNum){
+                        calcGrade = tasks.Grade.value;
+                        calcGrade = calcGrade.toString();
+                    }
+                    else{
+                        if (student.isApproved){
+                            calcGrade = "Aprobada";
+                        }
+                        else{
+                            calcGrade = "Reprobada";
+                        }
+                    }
+                    const input = {
+                        courseGroup: classList.courseGroup,
+                        isNum: classList.isNum,
+                        studentName: student.studentName,
+                        absences: student.absences,
+                        weight: tasks.weight,
+                        grade:calcGrade
+                    }
+                    finalGradeInput.push(input)
+                }
+            }
+            await conGradesRequests.createFinalGrade(_, finalGradeInput)
+            return {message: "Las notas definitivas y las estadísticas de "+classList.courseGroup+" han sido creadas"}
         }
     }
 }

@@ -9,17 +9,17 @@ export const finalGradesTypeDef = `
   }
   input FinalGradeInput {
       groupId: Int!
-      studentName: String!
-      finalGrade: String!
+      isNum: Boolean!
       absences: Int!
-      approved: Boolean!
-      reason: String
+      studentName: String!
+      grade: String!
+      weight: Int!
   }`;
 
 export const finalGradesQueries = `
-      finalGradeByGroup(groupId: Int!): [FinalGrade]!
-      finalGradeByStudent(studentName: String!): [FinalGrade]!
-      finalGradeByGroupAndStudent(groupId: Int!, studentName: String!): FinalGrade!
+      finalGradesByGroup(groupId: Int!): [FinalGrade]!
+      finalGradesByStudent(studentName: String!): [FinalGrade]!
+      finalGradesByGroupAndStudent(groupId: Int!, studentName: String!): FinalGrade!
   `;
 
 export const finalGradesMutations = `
@@ -28,13 +28,13 @@ export const finalGradesMutations = `
 
 export const statsTypeDef = `
   type Stats {
-      groupId: Int!
-      participationPer: Int!
-      approbationPer: Int!
-      averageGrade: Int
-      standardDev: Int
-      bestGrade: Int
-      worstGrade: Int
+      group_id: Int
+      participation_percentage: Int
+      approbation_percentage: Int
+      average_grade: Int
+      standard_deviation: Int
+      best_grade: Int
+      worst_grade: Int
   }`;
 
 export const statsQueries = `

@@ -8,9 +8,9 @@ const request = {
         generalRequest(`${URL}/finalgrade/group/${groupId}`, 'GET'),
     finalGradesByStudent: (_, { studentName }) =>
         generalRequest(`${URL}/finalgrade/student/${studentName}`, 'GET'),
-    finalGradesByStudentAndGroup: (_, { groupId, studentName }) =>
+    finalGradesByGroupAndStudent: (_, { groupId, studentName }) =>
         generalRequest(`${URL}/finalgrade/student/${groupId}/${studentName}`, 'GET'),
-    getStats: (_, { groupId }) =>
+    statsByGroup: (_, { groupId }) =>
         generalRequest(`${URL}/stats/${groupId}`, 'GET'),
     createFinalGrade: (_, { finalGrade }) =>
         generalRequest(`${URL}/finalgrade/save`, 'POST', finalGrade),
