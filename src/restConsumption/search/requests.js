@@ -45,7 +45,10 @@ const requests = {
         generalRequest(`${URL}/groupById/${groupId}`, 'GET'),
 
     subGrupoByGrupoId: (_, {subGroupId}) =>
-        generalRequest(`${URL}/subGrupoByGrupoId/${subGroupId}`, 'GET')
+        generalRequest(`${URL}/subGrupoByGrupoId/${subGroupId}`, 'GET'),
+
+    updateGroup: (_, {id, group}) =>
+        generalRequest(`${URL}/updateGroup/${id}`, 'PUT', group)
 };
 
 export default requests;

@@ -1,5 +1,3 @@
-// TODO: Los types no pueden llevar nombres duplicados
-
 //Campus
 export const searchAllCampusTypedef = `
     type Campus {
@@ -164,7 +162,7 @@ export const searchByProfessorTypeDef = `
 `;
 
 export const searchByProfessorQueries = `
-      searchByProfessor(teacherName: String!): [Group]
+      searchByProfessor(teacherName: String!): [GroupByProfessor]
   `;
 
 export const groupByQuotaTypeDef = `
@@ -180,7 +178,7 @@ export const groupByQuotaTypeDef = `
 `;
 
 export const groupByQuotaQueries = `
-    groupByQuota: [Group]
+    groupByQuota: [GroupByQuota]
   `;
 
 
@@ -232,5 +230,5 @@ export const subGrupoByGrupoIdTypeDef = `
 `;
 
 export const subGrupoByGrupoIdQueries = `
-    subGrupoByGrupoId(subGroupId: Int!): [Subgroup]
+    subGrupoByGrupoId(subGroupId: Int!): [SubgroupByGrupoId]
   `;

@@ -11,21 +11,31 @@ const gradesResolvers = {
             return gradesRequests.getTasks(_, { classId, teacherId })
         },
 
-        // TODO ¿De dónde obtengo teacherName que lleva info? (si es del jwt, ¿cómo?)
+        // Duda: ¿Debo obtener teacherName del jwt?
         getSchedule: (_, { info }) => {
             return gradesRequests.getSchedule(_, {info})
         },
     },
     Mutation: {
 
-        /* TODO:
-            1. ¿Para todos los profesores (cuándo)? ¿O así individual apenas se registre el usuario?
-            2. Pensar cómo manejo el tema de los subgrupos (docenteEspecifico == docenteTotular
-            3. ¿Cómo manejo errores?
-         */
+        // TODO: Esto debe hacerse cuando se registra un profesor. Mover este código a esos resolvers
         createClassList: async (_, {teacherName}) => {
             const data = await searchRequests.searchByProfessor(_,{teacherName})
             for (const res of data){
+                let wDaysArr = res.subGrupos[0].dias.split(" y ")
+                let wDaysStr = ""
+                for (const wDay of wDaysArr.slice(0,-1)){
+                    if (wDay.substring(0,3) === "Mié"){
+                        wDaysStr += "Mie"
+                    } else {
+                        wDaysStr += wDay.substring(0, 3) + ","
+                    }
+                }
+                if (wDaysArr[wDaysArr.length-1].substring(0,3) === "Mié"){
+                    wDaysStr += "Mie"
+                } else {
+                    wDaysStr += wDaysArr[wDaysArr.length-1].substring(0, 3)
+                }
                 const classList = {
                     teacherName: res.docenteTitular,
                     semester: res.semestre,
@@ -34,14 +44,14 @@ const gradesResolvers = {
                     isNum: res.Materium.esNumerico,
                     classroom: res.subGrupos[0].salon,
                     schedule: res.subGrupos[0].hora,
-                    wDays: res.subGrupos[0].dias,
+                    wDays: wDaysStr
                 }
                 await gradesRequests.createClassList(_, {classList})
             }
             return {message: "Las listas de clase de " + teacherName + " se crearon exitosamente"}
         },
 
-        //TODO: Dado que no hay un rol de administrador, ¿deberíamos dejar que todo esto lo maneje el profesor o no?
+        // Duda: ¿Quién tiene acceso a estas funciones?
         updateClassList: (_, { id, classList }) => {
             return gradesRequests.updateClassList(_, {id, classList})
         },
@@ -69,12 +79,12 @@ const gradesResolvers = {
             return gradesRequests.removeStudent(_, { id, classId })
         },
 
-        // TODO: Revisar de dónde obtengo el teacherName x2
+        // Duda: ¿Debo obtener teacherName del jwt?
         approval: (_, { classId, studentId, grade }) => {
             return gradesRequests.approval(_, { classId, studentId, grade })
         },
 
-        //Estas ya están listas
+        // Estas ya están listas
         createTasks: (_, { classId, tasks }) => {
             return gradesRequests.createTasks(_, { classId, tasks })
         },
@@ -90,8 +100,6 @@ const gradesResolvers = {
         editGrade: (_, { classId, studentId, taskId, grade }) => {
             return gradesRequests.editGrade(_, { classId, studentId, taskId, grade })
         },
-
-        // TODO: ¿De dónde sale max absences?
         addAbsences: (_, { classId, studentId, absences }) => {
             return gradesRequests.addAbsences(_, { classId, studentId, absences })
         },
