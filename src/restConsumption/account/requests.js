@@ -8,8 +8,12 @@ const requests = {
         generalRequest(`${URL}/login`, 'POST', loginBody),
     register: (_, { registerBody }) =>
         generalRequest(`${URL}/register`, 'POST', registerBody),
-    validate: (_, { token }) =>
-        generalRequest(`${URL}/validate`, 'GET', headers=token )
+    validate: (_, { token }) => {
+        const headers = {
+            Authorization: "Bearer" + token
+        };
+        generalRequest(`${URL}/validate`, 'GET', _, headers)
+    }
 };
 
 export default requests;

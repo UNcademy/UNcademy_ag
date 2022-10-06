@@ -1,3 +1,3 @@
-export const url = 'localhost'
-export const port = '8080'
+export const url = '172.17.0.8'
+export const port = '8002'
 export const entryPoint = 'search'

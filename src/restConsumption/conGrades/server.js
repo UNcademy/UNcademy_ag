@@ -1,2 +1,2 @@
-export const url = 'localhost'
-export const port = '4000'
+export const url = '192.168.48.3'
+export const port = '3000'

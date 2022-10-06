@@ -9,6 +9,6 @@ RUN npm install
 
 # Bundle app source
 COPY . /UNcademy_ag/
-RUN npm run prepublish
+CMD [ "npm", "run", "prepublish" ]
 
 CMD [ "npm", "run", "runServer" ]

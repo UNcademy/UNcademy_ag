@@ -11,7 +11,7 @@ import { formatErr } from './utilities';
 
 const app = new Koa();
 const router = new KoaRouter();
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 5001;
 
 app.use(koaLogger());
 app.use(koaCors());

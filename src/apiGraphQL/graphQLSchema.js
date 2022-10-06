@@ -43,10 +43,15 @@ import {
     registrationMutations
 } from '../businessLogic/registration/typeDefs';
 
+import {
+    loginTypeDef, registerTypeDef, accountQueries, accountMutations
+} from '../businessLogic/account/typeDefs'
+
 import gradesResolvers from '../businessLogic/grades/resolvers';
 import searchResolvers from "../businessLogic/search/resolvers";
 import registrationResolvers from '../businessLogic/registration/resolvers';
 import conGradesResolvers from "../businessLogic/conGrades/resolvers";
+import accountResolvers from "../businessLogic/account/resolvers";
 
 // merge the typeDefs
 const mergedTypeDefs = mergeSchemas(
@@ -70,7 +75,9 @@ const mergedTypeDefs = mergeSchemas(
         groupByQuotaTypeDef,
         registrationTypesDef,
         finalGradesTypeDef,
-        statsTypeDef
+        statsTypeDef,
+        loginTypeDef,
+        registerTypeDef
     ],
     [
         classListQueries,
@@ -91,8 +98,9 @@ const mergedTypeDefs = mergeSchemas(
         searchSubjectByNameQueries,
         searchSubjectByTypeQueries,
         finalGradesQueries,
-        statsQueries
-        registrationQueries
+        statsQueries,
+        registrationQueries,
+        accountQueries
     ],
     [
         classListMutations,
@@ -101,7 +109,8 @@ const mergedTypeDefs = mergeSchemas(
         taskMutations,
         gradeMutations,
         registrationMutations,
-        finalGradesMutations
+        finalGradesMutations,
+        accountMutations
     ]
 );
 
@@ -113,6 +122,7 @@ export default makeExecutableSchema({
         gradesResolvers,
         searchResolvers,
         conGradesResolvers,
-        registrationResolvers
+        registrationResolvers,
+        accountResolvers
     )
 });

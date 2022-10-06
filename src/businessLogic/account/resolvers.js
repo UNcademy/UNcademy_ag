@@ -4,10 +4,11 @@ import accountRequests from '../../restConsumption/account/requests';
 const accountResolvers = {
     Query: {
         login: (_, { loginBody }) => {
+            console.log(loginBody)
             return accountRequests.login(_, { loginBody })
         },
         validate: (_, { token }) => {
-            return accountRequests.validate(_, { token })
+            return accountRequests.validate(_, {token})
         }
     },
     Mutation: {
