@@ -38,9 +38,16 @@ import {
     registrationMutations
 } from '../businessLogic/registration/typeDefs';
 
+import{
+    acadRegTypesDef,
+    academicQueries,
+    academicMutations
+} from  '../businessLogic/acadReg/typeDefs';
+
 import gradesResolvers from '../businessLogic/grades/resolvers';
 import searchResolvers from "../businessLogic/search/resolvers";
 import registrationResolvers from '../businessLogic/registration/resolvers';
+import academicResolvers from '../businessLogic/acadReg/resolvers';
 
 // merge the typeDefs
 const mergedTypeDefs = mergeSchemas(
@@ -62,7 +69,8 @@ const mergedTypeDefs = mergeSchemas(
         groupByIdTypeDef,
         groupBynumerTypeDef,
         groupByQuotaTypeDef,
-        registrationTypesDef
+        registrationTypesDef,
+        acadRegTypesDef
     ],
     [
         classListQueries,
@@ -82,7 +90,8 @@ const mergedTypeDefs = mergeSchemas(
         searchSubjectByKeywordQueries,
         searchSubjectByNameQueries,
         searchSubjectByTypeQueries,
-        registrationQueries
+        registrationQueries,
+        academicQueries
     ],
     [
         classListMutations,
@@ -90,7 +99,8 @@ const mergedTypeDefs = mergeSchemas(
         teacherMutations,
         taskMutations,
         gradeMutations,
-        registrationMutations
+        registrationMutations,
+        academicMutations
     ]
 );
 
@@ -101,6 +111,7 @@ export default makeExecutableSchema({
         { JSON: GraphQLJSON }, // allows scalar JSON
         gradesResolvers,
         searchResolvers,
-        registrationResolvers
+        registrationResolvers,
+        academicResolvers
     )
 });
