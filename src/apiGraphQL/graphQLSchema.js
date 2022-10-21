@@ -34,7 +34,8 @@ import {
 
 import {
     finalGradesTypeDef, finalGradesQueries, finalGradesMutations,
-    statsTypeDef, statsQueries
+    statsTypeDef, statsQueries,
+    actTypeDef, actQueries
 } from '../businessLogic/conGrades/typeDefs'
 
 import {
@@ -77,7 +78,8 @@ const mergedTypeDefs = mergeSchemas(
         finalGradesTypeDef,
         statsTypeDef,
         loginTypeDef,
-        registerTypeDef
+        registerTypeDef,
+        actTypeDef
     ],
     [
         classListQueries,
@@ -100,7 +102,8 @@ const mergedTypeDefs = mergeSchemas(
         finalGradesQueries,
         statsQueries,
         registrationQueries,
-        accountQueries
+        accountQueries,
+        actQueries
     ],
     [
         classListMutations,
@@ -110,7 +113,7 @@ const mergedTypeDefs = mergeSchemas(
         gradeMutations,
         registrationMutations,
         finalGradesMutations,
-        accountMutations
+        accountMutations,
     ]
 );
 
