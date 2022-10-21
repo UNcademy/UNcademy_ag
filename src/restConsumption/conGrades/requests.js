@@ -14,6 +14,10 @@ const request = {
         generalRequest(`${URL}/stats/${groupId}`, 'GET'),
     createFinalGrade: (_, { finalGradeInput }) =>
         generalRequest(`${URL}/finalgrade/save`, 'POST', finalGradeInput),
+    generateAct: (_, {actInput}) =>
+        generalRequest(`${URL}/act`,'POST', actInput),
+    getAct: (_,{actId}) =>
+        generalRequest(`${URL}/act/${actId}`, 'GET')
 };
 
 export default request
