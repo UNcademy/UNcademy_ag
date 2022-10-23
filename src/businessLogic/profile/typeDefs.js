@@ -1,5 +1,5 @@
 export const viewProfileTypeDef = `
-    type Profile {
+    type ProfileView {
         UserName: String!
 	    UserType: String! 
 	    Password: String!
@@ -29,7 +29,7 @@ export const viewProfileTypeDef = `
 `;
 
 export const updateProfileTypeDef = `
-    type Profile {
+    input Profile {
         UserName: String!
         UserType: String! 
         Password: String!
@@ -60,12 +60,12 @@ export const updateProfileTypeDef = `
         statusCode: Int
         method: String
         message: String
-        data: Profile
+        data: ProfileView
     }
 `
 
 export const profileQueries = `
-      viewProfile(username: String!): ProfileResult
+      viewProfile(username: String!): ProfileView
   `;
 
 export const profileMutations = `
