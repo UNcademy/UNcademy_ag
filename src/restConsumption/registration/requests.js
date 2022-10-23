@@ -11,7 +11,15 @@ const requests = {
         generalRequest(`${URL}/CreateRegistration`, 'POST', registration),
 
     updateRegistration:(_,{id},{registration})=>
-        generalRequest(`${URL}/UpdateRegistration/${id}`, 'POST', registration)
+        generalRequest(`${URL}/UpdateRegistration/${id}`, 'POST', registration),
+
+    getAppointment:(_,{id})=>
+        generalRequest(`${URL}/Appointment/${id}`, 'GET'),
+
+    createAppointment:(_, { appointment }) =>
+        generalRequest(`${URL}/CreateAppointment`, 'POST', appointment)
+        
+
 };
 
 export default requests;
