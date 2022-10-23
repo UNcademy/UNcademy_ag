@@ -47,11 +47,14 @@ import {
     loginTypeDef, registerTypeDef, accountQueries, accountMutations
 } from '../businessLogic/account/typeDefs'
 
+import { viewProfileTypeDef, updateProfileTypeDef, profileQueries, profileMutations } from '../businessLogic/profile/typeDefs';
+
 import gradesResolvers from '../businessLogic/grades/resolvers';
 import searchResolvers from "../businessLogic/search/resolvers";
 import registrationResolvers from '../businessLogic/registration/resolvers';
 import conGradesResolvers from "../businessLogic/conGrades/resolvers";
 import accountResolvers from "../businessLogic/account/resolvers";
+import profileResolvers from '../businessLogic/profile/resolvers';
 
 // merge the typeDefs
 const mergedTypeDefs = mergeSchemas(
@@ -77,7 +80,9 @@ const mergedTypeDefs = mergeSchemas(
         finalGradesTypeDef,
         statsTypeDef,
         loginTypeDef,
-        registerTypeDef
+        registerTypeDef,
+        viewProfileTypeDef, 
+        updateProfileTypeDef
     ],
     [
         classListQueries,
@@ -100,7 +105,8 @@ const mergedTypeDefs = mergeSchemas(
         finalGradesQueries,
         statsQueries,
         registrationQueries,
-        accountQueries
+        accountQueries,
+        profileQueries
     ],
     [
         classListMutations,
@@ -110,7 +116,8 @@ const mergedTypeDefs = mergeSchemas(
         gradeMutations,
         registrationMutations,
         finalGradesMutations,
-        accountMutations
+        accountMutations,
+        profileMutations
     ]
 );
 
@@ -123,6 +130,7 @@ export default makeExecutableSchema({
         searchResolvers,
         conGradesResolvers,
         registrationResolvers,
-        accountResolvers
+        accountResolvers,
+        profileResolvers
     )
 });
