@@ -1,5 +1,6 @@
 import conGradesRequests from '../../restConsumption/conGrades/requests'
 import gradesRequests from '../../restConsumption/grades/requests'
+import searchRequests from "../../restConsumption/search/requests";
 
 const conGradesResolvers = {
     Query:{
@@ -14,6 +15,35 @@ const conGradesResolvers = {
         },
         statsByGroup: (_, {groupId} ) => {
             return conGradesRequests.statsByGroup(_, {groupId})
+        },
+        generateAct: async (_, {groupId}) => {
+            let gradesList = await conGradesRequests.finalGradesByGroup(_, {groupId});
+            for (let grade of gradesList) {
+                if (!isNaN(+grade.finalGrade)) {
+                    grade.finalGrade = parseInt(grade.finalGrade, 10);
+                }
+                if (grade.approved) {
+                    grade.approved = "Aprobada";
+                } else if (!grade.approved) {
+                    grade.approved = "Reprobada";
+                }
+            }
+            const groupDetails = searchRequests.groupBynumer(_, {groupId});
+            const courseName = groupDetails.Materium.nombre;
+            const teacherName = groupDetails.docenteTitular;
+            const date = new Date;
+            const currentDate = date.getDate() + '-' + (date.getMonth() + 1) + '-' + date.getFullYear();
+            const actInput = {
+                courseName,
+                teacherName,
+                currentDate,
+                gradesList
+            }
+            await conGradesRequests.generateAct(_,{actInput});
+            return {message: "El acta del curso " + gradesList[1].groupId + " grupo " + gradesList[1].groupId + " ha sido creada"}
+        },
+        getAct: async (_,{actId}) => {
+            return {message: conGradesRequests.getAct(_,{actId})};
         }
     },
     Mutation:{
@@ -51,6 +81,6 @@ const conGradesResolvers = {
             return {message: "Las notas definitivas y las estadísticas de "+ courseDetails.courseGroup+" han sido creadas"}
         }
     }
-}
+};
 
 export default conGradesResolvers

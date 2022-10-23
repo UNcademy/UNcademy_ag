@@ -39,4 +39,17 @@ export const statsTypeDef = `
 
 export const statsQueries = `
       statsByGroup(groupId: Int!):[Stats]!
-`
+`;
+
+export const actTypeDef = `
+  type Act {
+      courseName: String!
+      teacherName: String!
+      currentDate: String!
+      gradesList: [FinalGrade]!
+  }`;
+
+export const actQueries = `
+      getAct(actId: Int!): Message
+      generateAct(groupId: Int!): Message
+`;
