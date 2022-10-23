@@ -48,7 +48,7 @@ import{
     acadRegTypesDef,
     academicQueries,
     academicMutations
-} from  '../businessLogic/acadReg/typeDefs';
+} from '../businessLogic/acadRec/typeDefs';
 
 import {
     loginTypeDef, registerTypeDef, accountQueries, accountMutations
@@ -62,7 +62,7 @@ import registrationResolvers from '../businessLogic/registration/resolvers';
 import conGradesResolvers from "../businessLogic/conGrades/resolvers";
 import accountResolvers from "../businessLogic/account/resolvers";
 import profileResolvers from '../businessLogic/profile/resolvers';
-import academicResolvers from '../businessLogic/acadReg/resolvers';
+import academicResolvers from '../businessLogic/acadRec/resolvers';
 
 // merge the typeDefs
 const mergedTypeDefs = mergeSchemas(
@@ -91,7 +91,7 @@ const mergedTypeDefs = mergeSchemas(
         loginTypeDef,
         registerTypeDef,
         viewProfileTypeDef,
-        updateProfileTypeDef
+        updateProfileTypeDef,
         actTypeDef
     ],
     [
@@ -116,7 +116,7 @@ const mergedTypeDefs = mergeSchemas(
         statsQueries,
         registrationQueries,
         accountQueries,
-        profileQueries
+        profileQueries,
         actQueries,
         academicQueries
     ],

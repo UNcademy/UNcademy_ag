@@ -1,4 +1,4 @@
-import academicRequests from '../../restConsumption/acadReg/requests'
+import academicRequests from '../../restConsumption/acadRec/requests'
 
 const academicResolvers = {
     Query: {
