@@ -90,7 +90,7 @@ const mergedTypeDefs = mergeSchemas(
         statsTypeDef,
         loginTypeDef,
         registerTypeDef,
-        viewProfileTypeDef,
+        viewProfileTypeDef, 
         updateProfileTypeDef,
         actTypeDef
     ],
