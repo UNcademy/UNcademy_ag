@@ -83,7 +83,7 @@ const mergedTypeDefs = mergeSchemas(
         loginTypeDef,
         registerTypeDef,
         viewProfileTypeDef, 
-        updateProfileTypeDef
+        updateProfileTypeDef,
         actTypeDef
     ],
     [
@@ -108,7 +108,7 @@ const mergedTypeDefs = mergeSchemas(
         statsQueries,
         registrationQueries,
         accountQueries,
-        profileQueries
+        profileQueries,
         actQueries
     ],
     [

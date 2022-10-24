@@ -11,8 +11,8 @@ export const viewProfileTypeDef = `
 	    CityDocument: String! 
 	    Genre: String!
 	    UNMail: String!
-	    Cel: Int!    
-	    Tel: Int!    
+	    Cel: Float!    
+	    Tel: Float!    
 	    Age: Int!    
 	    BirthPlace: String! 
 	    Country: String! 
@@ -22,39 +22,16 @@ export const viewProfileTypeDef = `
 	    MotherFullName: String! 
 	    MotherDocument: Int!    
 	    FatherFullName: String! 
-	    FatherDocument: Int!    
-	    CreatedAt: String!
-	    UpdatedAt: String!
+	    FatherDocument: Int!
     }
 `;
 
 export const updateProfileTypeDef = `
-    type Profile {
-        UserName: String!
-        UserType: String! 
-        Password: String!
-        FullName: String!
-        Document: Int!
+    input InputProfile {
         Email: String!
-        Active: Boolean!
-        DepDocument: String!   
-        CityDocument: String! 
-        Genre: String!
-        UNMail: String!
-        Cel: Int!    
-        Tel: Int!    
-        Age: Int!    
-        BirthPlace: String! 
-        Country: String! 
-        BloodType: String! 
-        Address: String! 
-        ArmyCard: Boolean!   
-        MotherFullName: String! 
-        MotherDocument: Int!    
-        FatherFullName: String! 
-        FatherDocument: Int!    
-        CreatedAt: String!
-        UpdatedAt: String!
+        Cel: Float!    
+        Tel: Float!     
+        Address: String!
     }
     type ProfileResult {
         statusCode: Int
@@ -69,5 +46,5 @@ export const profileQueries = `
   `;
 
 export const profileMutations = `
-      updateProfile(username: String!, profile: Profile!): ProfileResult
+      updateProfile(username: String!, profile: InputProfile!): ProfileResult
   `;
