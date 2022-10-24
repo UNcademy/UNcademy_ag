@@ -12,7 +12,6 @@ export const registerTypeDef = `
         password: String!
         full_name: String!
         document: Int!
-        state: Boolean!
         dep_document: String!
         city_document: String!
         program: String!

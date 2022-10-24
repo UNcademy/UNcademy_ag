@@ -6,6 +6,9 @@ const registrationResolvers = {
             return await registrationRequests.getRegistration(_,{id})
         
         },
+        getAppointment:(_, { id }) => {
+            return  registrationRequests.getAppointment(_,{id})
+        }
     },
 
     Mutation: {
@@ -14,6 +17,9 @@ const registrationResolvers = {
         },
         updateRegistration:(_,{id},{registration})=>{
             return registrationRequests.updateRegistration(_,{id},{registration})
+        },
+        createAppointment: (_, {appointment}) => {
+            return registrationRequests.createAppointment(_, { appointment })
         },
     }
 }
