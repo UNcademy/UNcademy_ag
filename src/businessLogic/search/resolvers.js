@@ -29,7 +29,7 @@ const searchResolvers = {
         searchmateriaByPlan: (_, { Id }) => {
             return searchRequests.searchmateriaByPlan(_, { Id })
         },
-        groupBynumer: (_, { courseName }) => {
+        groupBynumer: (_, { groupNumber }) => {
             return searchRequests.groupBynumer(_, { groupNumber })
         },
         searchByProfessor: (_, { teacherName }) => {
