@@ -1,12 +1,37 @@
 export const registrationTypesDef=`
-    type registration{
+    type Registration{
         idStudent:String!
-        subjects:[String]
+        idProgram:String!
+        subjects:[subject]
+    }
+    type Registration2{
+        idStudent:String!
+        idProgram:String!
+        subjects:[subject]
     }
     input registrationInput{
         idStudent:String!
-        subjects:[String]
+        idProgram:String!
+        subjects:[subjectInput]
     }
+
+    type subject{
+        idSubject:String
+        nameSubject:String
+        cupSubject:Int
+        days:String
+        time:Int
+        requirements:[String]
+    }
+    input subjectInput{
+        idSubject:String
+        nameSubject:String
+        cupSubject:Int
+        days:String
+        time:Int
+        requirements:[String]
+    }
+
     type appointment{
         id: String!
         idStudent:String!
@@ -24,12 +49,14 @@ export const registrationTypesDef=`
 
 `;
 export const registrationQueries=`
-    getRegistration(id:String!):registration!
+    getRegistration(id:String!):Registration!
     getAppointment(id:String!):appointment!
+    getSubjects(id:String!):subject!
+    getAllSubjects:[subject]!
 `;
 
 export const registrationMutations=`
-    createRegistration(reg:registrationInput!):registration!
-    updateRegistration(id:String, reg:registrationInput!):registration!
-    createAppointment(appoint:appointmentInput):String
+    createRegistration(reg:registrationInput):Registration
+    updateRegistration(id:String, reg:registrationInput!):Registration!
+    createAppointment(appoint:appointmentInput):String!
 `;

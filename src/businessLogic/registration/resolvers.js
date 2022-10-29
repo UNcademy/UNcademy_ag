@@ -8,7 +8,14 @@ const registrationResolvers = {
         },
         getAppointment:(_, { id }) => {
             return  registrationRequests.getAppointment(_,{id})
+        },
+        getSubjects:(_, { id }) => {
+            return  registrationRequests.getSubjects(_,{id})
+        },
+        getAllSubjects:(_)=>{
+            return registrationRequests.getAllSubjects(_)
         }
+
     },
 
     Mutation: {
