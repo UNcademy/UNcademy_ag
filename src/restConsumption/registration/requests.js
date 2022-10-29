@@ -7,6 +7,12 @@ const requests = {
     getRegistration:(_,{id})=>
         generalRequest(`${URL}/Registration/${id}`, 'GET')  ,
 
+    getSubjects:(_,{id})=>
+    generalRequest(`${URL}/Subject/${id}`, 'GET'),
+
+    getAllSubjects:()=>
+    generalRequest(`${URL}/Subjects`, 'GET'),
+
     createRegistration: (_, { registration }) =>
         generalRequest(`${URL}/CreateRegistration`, 'POST', registration),
 
