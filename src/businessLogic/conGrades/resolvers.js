@@ -43,6 +43,31 @@ const conGradesResolvers = {
         },
         getAct: async (_,{actId}) => {
             return {message: conGradesRequests.getAct(_,{actId})};
+        },
+        getActInformation: async (_,{groupId}) => {
+            let gradesList = await conGradesRequests.finalGradesByGroup(_, {groupId});
+            for (let grade of gradesList) {
+                if (!isNaN(+grade.final_grade)) {
+                    grade.final_grade = parseInt(grade.final_grade, 10);
+                }
+                if (grade.approved) {
+                    grade.approved = "Aprobada";
+                } else if (!grade.approved) {
+                    grade.approved = "Reprobada";
+                }
+            }
+            //const groupDetails = await gradesRequests.classListDetails(_, {id:groupId});
+            const courseName = "Arquitectura de Software";     //groupDetails.courseName
+            const teacherName = "Jeisson Andrés Vergara";      //groupDetails.teacherName
+            const date = new Date;
+            const currentDate = date.getDate() + '-' + (date.getMonth() + 1) + '-' + date.getFullYear();
+            const actInput = {
+                courseName,
+                teacherName,
+                currentDate,
+                gradesList
+            }
+            return actInput
         }
     },
     Mutation:{

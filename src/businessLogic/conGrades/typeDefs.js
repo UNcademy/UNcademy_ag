@@ -52,4 +52,5 @@ export const actTypeDef = `
 export const actQueries = `
       getAct(actId: Int!): Message
       generateAct(groupId: Int!, teacherName: String!): Message
+      getActInformation(groupId: Int!): Act!
 `;
