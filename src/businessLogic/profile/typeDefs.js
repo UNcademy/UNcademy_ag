@@ -42,7 +42,7 @@ export const updateProfileTypeDef = `
 `
 
 export const profileQueries = `
-      viewProfile(username: String!): ProfileView
+      viewProfile(username: String!): ProfileResult
   `;
 
 export const profileMutations = `

@@ -4,11 +4,6 @@ export const registrationTypesDef=`
         idProgram:String!
         subjects:[subject]
     }
-    type Registration2{
-        idStudent:String!
-        idProgram:String!
-        subjects:[subject]
-    }
     input registrationInput{
         idStudent:String!
         idProgram:String!

@@ -8,10 +8,10 @@ const requests = {
         generalRequest(`${URL}/Registration/${id}`, 'GET')  ,
 
     getSubjects:(_,{id})=>
-    generalRequest(`${URL}/Subject/${id}`, 'GET'),
+        generalRequest(`${URL}/Subject/${id}`, 'GET'),
 
     getAllSubjects:()=>
-    generalRequest(`${URL}/Subjects`, 'GET'),
+        generalRequest(`${URL}/Subjects`, 'GET'),
 
     createRegistration: (_, { registration }) =>
         generalRequest(`${URL}/CreateRegistration`, 'POST', registration),
@@ -24,7 +24,6 @@ const requests = {
 
     createAppointment:(_, { appointment }) =>
         generalRequest(`${URL}/CreateAppointment`, 'POST', appointment)
-        
 
 };
 
