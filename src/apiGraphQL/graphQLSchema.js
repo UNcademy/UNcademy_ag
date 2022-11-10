@@ -56,6 +56,8 @@ import {
 
 import { viewProfileTypeDef, updateProfileTypeDef, profileQueries, profileMutations } from '../businessLogic/profile/typeDefs';
 
+import {consumeTypesDef, consumeQueries} from '../businessLogic/consume/typeDefs';
+
 import gradesResolvers from '../businessLogic/grades/resolvers';
 import searchResolvers from "../businessLogic/search/resolvers";
 import registrationResolvers from '../businessLogic/registration/resolvers';
@@ -63,6 +65,7 @@ import conGradesResolvers from "../businessLogic/conGrades/resolvers";
 import accountResolvers from "../businessLogic/account/resolvers";
 import profileResolvers from '../businessLogic/profile/resolvers';
 import academicResolvers from '../businessLogic/acadRec/resolvers';
+import consumeResolvers from '../businessLogic/consume/resolvers';
 
 // merge the typeDefs
 const mergedTypeDefs = mergeSchemas(
@@ -92,7 +95,8 @@ const mergedTypeDefs = mergeSchemas(
         registerTypeDef,
         viewProfileTypeDef, 
         updateProfileTypeDef,
-        actTypeDef
+        actTypeDef,
+        consumeTypesDef
     ],
     [
         classListQueries,
@@ -118,7 +122,8 @@ const mergedTypeDefs = mergeSchemas(
         accountQueries,
         profileQueries,
         actQueries,
-        academicQueries
+        academicQueries,
+        consumeQueries
     ],
     [
         classListMutations,
@@ -145,6 +150,7 @@ export default makeExecutableSchema({
         registrationResolvers,
         accountResolvers,
         profileResolvers,
-        academicResolvers
+        academicResolvers,
+        consumeResolvers
     )
 });
