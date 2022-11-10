@@ -15,5 +15,5 @@ export const consumeTypesDef=`
     
 `;
 export const consumeQueries = `
-      consumeSubject(code: String!): consumesubject!
+      consumeSubject(code: Int!): consumesubject!
   `;

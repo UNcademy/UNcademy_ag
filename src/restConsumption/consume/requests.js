@@ -1,7 +1,6 @@
-import { generalRequest, getRequest } from '../../utilities';
-import { url, port, entryPoint } from './server';
+import { generalRequest } from '../../utilities';
 
-const URL = `http://${url}:${port}`;
+const URL = `http://172.17.0.1:9000`;
 
 const requests = {
     consumeSubject:(_,{code})=>
