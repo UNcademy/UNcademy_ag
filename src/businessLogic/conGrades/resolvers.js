@@ -56,9 +56,9 @@ const conGradesResolvers = {
                     grade.approved = "Reprobada";
                 }
             }
-            //const groupDetails = await gradesRequests.classListDetails(_, {id:groupId});
-            const courseName = "Arquitectura de Software";     //groupDetails.courseName
-            const teacherName = "Jeisson Andrés Vergara";      //groupDetails.teacherName
+            const groupDetails = await gradesRequests.classListDetails(_, {id:groupId});
+            const courseName = groupDetails.courseName
+            const teacherName = groupDetails.Teachers[0].teacherName
             const date = new Date;
             const currentDate = date.getDate() + '-' + (date.getMonth() + 1) + '-' + date.getFullYear();
             const actInput = {

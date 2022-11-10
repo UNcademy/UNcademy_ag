@@ -1,7 +1,7 @@
 import { generalRequest } from '../../utilities';
 import { url, port } from './server';
 
-const URL = `https://UNcademymsconGrades.team-uncademy.repl.co`;
+const URL = `http://${url}:${port}`;
 
 const request = {
     finalGradesByGroup: (_, { groupId }) =>

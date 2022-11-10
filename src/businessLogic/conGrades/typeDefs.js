@@ -42,15 +42,23 @@ export const statsQueries = `
 `;
 
 export const actTypeDef = `
+  type ActFinalGrade {
+      group_id: Int!
+      student_name: String!
+      final_grade: String!
+      absences: Int!
+      approved: String!
+      reason: String
+  }
   type Act {
       courseName: String!
       teacherName: String!
       currentDate: String!
-      gradesList: [FinalGrade]!
+      gradesList: [ActFinalGrade]!
   }`;
 
 export const actQueries = `
-      getAct(actId: Int!): Message
-      generateAct(groupId: Int!, teacherName: String!): Message
-      getActInformation(groupId: Int!): Act!
+    getAct(actId: Int!): Message
+    generateAct(groupId: Int!, teacherName: String!): Message
+    getActInformation(groupId: Int!): Act!
 `;
